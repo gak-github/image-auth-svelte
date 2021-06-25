@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import Transaction from './Transaction.svelte';
-    import store from '../store/store-transactions';
+    import store from '../store/store-account';
     import axios from 'axios';
 
     export let transactions;

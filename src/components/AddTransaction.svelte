@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import store from '../store/store-transactions';
+    import store from '../store/store-account';
     let text = "";
     let amount = 0;
 

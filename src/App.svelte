@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import Header from './components/Header.svelte';
-	import Balance from './components/Balance.svelte';
-	import store from './store/store-transactions';
+	import Signup from './components/Signup.svelte';
+	import store from './store/store-account';
 	import axios from 'axios';
 
 	let transactions;
@@ -11,19 +11,20 @@
             const res = await axios.get("/.netlify/functions/express");
             store.set(
                 {
-                    //transactions: res.data.data
+					// images: res.data.data
                 }
 			);
-			store.subscribe( (existingStore) =>{
-				//transactions = existingStore.transactions;
+			store.subscribe( (existingStore) => {
+				//images = existingStore.images;
 			});
         } catch (error) {
 			// update the store with error and show error message in the page ==> TODO
-			//transactions = [{}];
+			//images = [{}];
         }
 	});
 </script>
 
 <Header/>
 <div class="container">
+	<Signup />
 </div>

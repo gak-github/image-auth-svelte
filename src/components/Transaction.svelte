@@ -1,7 +1,7 @@
 <script>
 import commas from "../utils/format";
 import axios from "axios";
-import store from '../store/store-transactions';
+import store from '../store/store-account';
 
 export let transaction;
 
