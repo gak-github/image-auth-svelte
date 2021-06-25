@@ -47,10 +47,10 @@
         type="email"
         bind:value={email}
         on:change={ setEmail }
-        placeholder="Enter email address to signup"
+        placeholder="Enter email address to signin"
         on:focus={ e => e.target.value = ''}
         on:blur={ e => e.target.value = email }
         />
     </div>
-    <button class="btn">Signup Continue</button>
+    <button class="btn">Login Continue</button>
 </form>

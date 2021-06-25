@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Header from './components/Header.svelte';
 	import Signup from './components/Signup.svelte';
+	import Signin from './components/Signin.svelte';
 	import store from './store/store-account';
 	import axios from 'axios';
 
@@ -27,4 +28,7 @@
 <Header/>
 <div class="container">
 	<Signup />
+	<hr class='signin-hr'/>
+	<h2>SignIn</h2>
+	<Signin />
 </div>

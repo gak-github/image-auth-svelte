@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  margin: 30px auto;
+  margin: 10px auto;
   width: 350px;
 }
 
@@ -46,7 +46,6 @@ img {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 5px;
-  margin-bottom: 10px;
   color: #082b6b
 }
 
@@ -60,18 +59,19 @@ h2 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin: 20px auto;
   background-color:#2268eb;
   width: 350px;
   justify-content: center;
   color: #fff;
   border-radius: 5px;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 15px;
-  margin: 40px 0 10px;
+  margin: 5px 0 10px;
 }
 
 h4 {
@@ -97,25 +97,12 @@ h4 {
   border-right: 1px solid #dedede;
 }
 
-.money {
-  font-size: 20px;
-  letter-spacing: 1px;
-  margin: 5px 0;
-}
-
-.money.plus {
-  color: #2ecc71;
-}
-
-.money.minus {
-  color: #c0392b;
-}
-
 label {
   display: inline-block;
   margin: 10px 0;
 }
 
+input[type='email'],
 input[type='text'],
 input[type='number'] {
   border: 1px solid #dedede;
@@ -124,6 +111,7 @@ input[type='number'] {
   font-size: 16px;
   padding: 10px;
   width: 100%;
+  margin-bottom: 25px;
 }
 
 .btn {
@@ -140,8 +128,7 @@ input[type='number'] {
   border-radius: 5px;
 }
 
-.btn:focus,
-.delete-btn:focus {
+.btn:focus {
   outline: 0;
 }
 
@@ -150,49 +137,8 @@ input[type='number'] {
   color: black;
 }
 
-.list {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 40px;
-}
-
-.list li {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.list li.plus {
-  border-right: 5px solid #2ecc71;
-}
-
-.list li.minus {
-  border-right: 5px solid #c0392b;
-}
-
-.delete-btn {
-  cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.list li:hover .delete-btn {
-  opacity: 1;
+.signin-hr {
+  margin-bottom: 25px;
 }
 
 @media (max-width: 320px) {
