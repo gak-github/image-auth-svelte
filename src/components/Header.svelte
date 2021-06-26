@@ -1,2 +1,1 @@
-<h3 className='top-head'> An image based authentication demo</h3>
-<h2>SignUp</h2>
+<h3> An image based authentication demo</h3>

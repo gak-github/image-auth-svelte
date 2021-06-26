@@ -1,13 +1,14 @@
 <script>
     import store from '../store/store-account';
+    import ImageList from './ImageList.svelte';
+    import Header from './Header.svelte';
+    import Signin from './Signup.svelte';
+    import page from 'page';
+    
+    let isSubmitting = false;
     let email = "";
-
+    
     const checkAccount = async (account) => {
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        };
         try {
             fetch('/.netlify/functions/express', {
                 method: 'post',
@@ -15,12 +16,13 @@
             }).then(function(response) {
                 return response.json();
             }).then(function(data) {
-                console.log("=====data====", data);
+                isSubmitting = false;
+                page('/images');
             });
             // update the store with recently added account
-            store.update( (existingStore) => {
-                return { account: [...existingStore.account, account] };
-            });
+            // store.update( (existingStore) => {
+            //     return { account: [...existingStore.account, account] };
+            // });
 
         } catch (error) {
             console.log("===error while creating an ===", error);
@@ -32,6 +34,7 @@
         if (email === "") {
             return;
         }
+        isSubmitting = true;
         checkAccount(email);
         email = '';
     };
@@ -41,16 +44,24 @@
     };
 </script>
 
-<form on:submit={onSubmit}>
-    <div>
-        <input
-        type="email"
-        bind:value={email}
-        on:change={ setEmail }
-        placeholder="Enter email address to signup"
-        on:focus={ e => e.target.value = ''}
-        on:blur={ e => e.target.value = email }
-        />
+{#if isSubmitting }
+    <div><p>Loading...</p></div>
+{:else }
+    <Header />
+    <div class="container">
+        <h2>Signup</h2>
+        <form on:submit={onSubmit}>
+            <div>
+                <input
+                type="email"
+                bind:value={email}
+                on:change={ setEmail }
+                placeholder="Enter email address to signup"
+                on:focus={ e => e.target.value = ''}
+                on:blur={ e => e.target.value = email }
+                />
+            </div>
+            <button class="btn">Continue</button>
+        </form>
     </div>
-    <button class="btn">Signup Continue</button>
-</form>
+{/if}

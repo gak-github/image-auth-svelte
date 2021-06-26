@@ -22,11 +22,14 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-device": "^0.4.2",
+    "express-ip": "^1.0.4",
+    "express-useragent": "^1.0.15",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.3",
+    "page": "^1.11.6",
     "serverless-http": "^2.0.2",
     "sirv-cli": "^0.4.4"
   }

@@ -34,6 +34,11 @@ exports.getAccountImages = async (req, res, next) => {
 // @route POST /api/v1/transations
 // @access Public
 exports.checkAccount = async (req, res, next) => {
+  console.log("=======req.device===", req.device.type);
+  console.log("======req.useragent=====", req.useragent.platform);
+  console.log("======req.ipInfo=====", req.ipInfo.ip);
+
+  console.log("=======ip====", req.headers['x-forwarded-for'] || req.connection.remoteAddress);
   const { email } = req.body
   if (isDev) {
     let newData = {

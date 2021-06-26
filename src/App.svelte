@@ -1,34 +1,33 @@
 <script>
 	import { onMount } from 'svelte';
-	import Header from './components/Header.svelte';
+	import router from "page";
 	import Signup from './components/Signup.svelte';
 	import Signin from './components/Signin.svelte';
+	import ImageList from './components/ImageList.svelte';
 	import store from './store/store-account';
-	import axios from 'axios';
-
-	let transactions;
+	
+	let page;
+	let images;
+	router('/', () => page = Signup);
+	router('/login', () => page = Signin);
+	router('/signup', () => page = Signup);
+	router('/images', () => page = ImageList);
+	router.start()
+	
 	onMount( async () => {
 		try {
-            const res = await axios.get("/.netlify/functions/express");
-            store.set(
-                {
-					// images: res.data.data
-                }
-			);
+			const res = await fetch.get("/.netlify/functions/express");
+			const data = await res.json();
+
+            store.set({ images: data });
 			store.subscribe( (existingStore) => {
-				//images = existingStore.images;
+				images = existingStore.images;
 			});
         } catch (error) {
 			// update the store with error and show error message in the page ==> TODO
-			//images = [{}];
+			images = [{}];
         }
 	});
 </script>
 
-<Header/>
-<div class="container">
-	<Signup />
-	<hr class='signin-hr'/>
-	<h2>SignIn</h2>
-	<Signin />
-</div>
+<svelte:component this={page} />
