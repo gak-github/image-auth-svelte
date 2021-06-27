@@ -11,6 +11,9 @@
     const checkAccount = async (account) => {
         try {
             fetch('/.netlify/functions/express', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 method: 'post',
                 body: JSON.stringify(account)
             }).then(function(response) {
@@ -35,7 +38,7 @@
             return;
         }
         isSubmitting = true;
-        checkAccount(email);
+        checkAccount({email});
         email = '';
     };
 
@@ -63,5 +66,8 @@
             </div>
             <button class="btn">Continue</button>
         </form>
+        <div>
+            <span>Already have an account?</span><a href='/login'>Login</a>
+        </div>
     </div>
 {/if}

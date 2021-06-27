@@ -1,1 +1,1 @@
-<h3> An image based authentication demo</h3>
+<h3> An image based authentication</h3>

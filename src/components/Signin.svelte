@@ -2,11 +2,14 @@
     // import store from '../store/store-account';
     import page from 'page';
 
-    let email = "";
-
+    let email = '';
+    let isSubmitting = ''
     const checkAccount = async (account) => {
         try {
             fetch('/.netlify/functions/express', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 method: 'post',
                 body: JSON.stringify(account)
             }).then(function(response) {
@@ -30,7 +33,12 @@
         if (email === "") {
             return;
         }
-        checkAccount(email);
+        isSubmitting = true;
+        let payload = {
+            email,
+            isLoginSubmit: true
+        }
+        checkAccount(payload);
         email = '';
     };
 
@@ -39,19 +47,23 @@
     };
 </script>
 
-<div class="container">
-    <h2>Signin</h2>
-    <form on:submit={onSubmit}>
-        <div>
-            <input
-            type="email"
-            bind:value={email}
-            on:change={ setEmail }
-            placeholder="Enter email address to signin"
-            on:focus={ e => e.target.value = ''}
-            on:blur={ e => e.target.value = email }
-            />
-        </div>
-        <button class="btn">Login Continue</button>
-    </form>
-</div>
+{#if isSubmitting }
+    <p>Loading the images...</p>
+{:else}
+    <div class="container">
+        <h2>Signin</h2>
+        <form on:submit={onSubmit}>
+            <div>
+                <input
+                type="email"
+                bind:value={email}
+                on:change={ setEmail }
+                placeholder="Enter email address to signin"
+                on:focus={ e => e.target.value = ''}
+                on:blur={ e => e.target.value = email }
+                />
+            </div>
+            <button class="btn">Login Continue</button>
+        </form>
+    </div>
+{/if}

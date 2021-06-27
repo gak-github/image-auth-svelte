@@ -149,6 +149,11 @@ input[type='number'] {
   margin-bottom: 25px;
 }
 
+span:after {
+  content:" "; 
+  display:inline-block;
+}
+
 @media (max-width: 320px) {
   .container {
     width: 300px;
