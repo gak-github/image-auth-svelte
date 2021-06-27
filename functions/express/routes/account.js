@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const {
-  checkAccount,
+  createOrLogin,
   getAccount
 } = require("../controllers/account");
 
 router
   .route("/")
   .get(getAccount)
-  .post(checkAccount)
+  .post(createOrLogin)
 
 module.exports = router;

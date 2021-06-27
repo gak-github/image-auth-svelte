@@ -23,8 +23,6 @@
 
 	onMount( async () => {
 		try {
-			const res = await fetch("/.netlify/functions/express");
-			const data = await res.json();
 			storeValue = {imageId: '', isLoggedIn: false, email: ''};
             store.set({imageId, isLoggedIn: false, email: ''});
 			// store.subscribe( (existingStore) => {

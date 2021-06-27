@@ -6,35 +6,30 @@ const isDev = !process.env.MONGO_PWD;
 // @desc Get images
 // @route GET /api/v1/account
 // @access Public
-exports.getAccount = async (req, res, next) => {
+const getAccount = async (req) => {
+  const { email } = req.body.email;
   try {
     if (isDev) {
       let localData = _.cloneDeep(localStorage);
-      return res.status(200).json({
-        success: true,
-        count: localData.length,
-        data: localData,
-      });
+      let localAccount = localData.find((acc) => acc.email === email);
+      return localAccount;
     }
 
     const account = await Account.find();
-    return res.status(200).json({
-      success: true,
-      data: account,
-    })
+    return account;
   } catch (error) {
     return res.send(500).json({
       success: false,
       error: error.message,
     })
   }
-}
+};
 
 // @desc To add a transaction
 // @route POST /api/v1/transations
 // @access Public
-exports.checkAccount = async (req, res, next) => {
-  const { email, imageId, isLoginSubmit } = req.body
+const createOrLogin = async (req, res) => {
+  const { email, imageId, isLoginSubmit } = req.body;
   const account = {
     email,
     imageId,
@@ -43,11 +38,24 @@ exports.checkAccount = async (req, res, next) => {
     platform: req.useragent.platform
   };
 
+  const existingAccount = await getAccount(req);
+  if (existingAccount && isLoginSubmit && imageId) {
+    return res.status(201).json({
+      success: true,
+      data: { isAuthenticated: true }
+    }); 
+  } else if (existingAccount) {
+    return res.status(201).json({
+      success: true,
+      data: { isAccountExist: true }
+    });
+  }
+
   if (isDev) {
     localStorage.push(account);
     return res.status(201).json({
       success: true,
-      data: account
+      data: { isAccountCreated: true }
     });
   }
 
@@ -55,7 +63,7 @@ exports.checkAccount = async (req, res, next) => {
     const account = await Account.create(account)
     return res.status(201).json({
       success: true,
-      data: account,
+      data: { isAccountCreated: true }
     })
   } catch (error) {
     if (error.name === "ValidationError") {
@@ -71,4 +79,9 @@ exports.checkAccount = async (req, res, next) => {
       })
     }
   }
-}
+};
+
+module.exports = {
+  createOrLogin,
+  getAccount
+};
