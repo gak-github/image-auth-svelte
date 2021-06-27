@@ -74,9 +74,12 @@ h3 {
   margin: 5px 0 10px;
 }
 
+h5 {
+  text-transform: none;
+}
+
 h4 {
-  margin: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .list {
@@ -149,9 +152,12 @@ input[type='number'] {
   margin-bottom: 25px;
 }
 
-span:after {
-  content:" "; 
-  display:inline-block;
+.success h5 {
+  color: rgba(19, 173, 19, 0.836)
+}
+
+.error h5 {
+  color: rgba(255, 94, 0, 0.877)
 }
 
 @media (max-width: 320px) {

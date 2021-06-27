@@ -2,7 +2,9 @@ import { writable } from 'svelte/store';
 
 const store = writable(
     {
-        transactions: []
+        imageId: '',
+        email: '',
+        isLoggedIn: false
     }
 );
 

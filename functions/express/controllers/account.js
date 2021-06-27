@@ -6,7 +6,7 @@ const isDev = !process.env.MONGO_PWD;
 // @desc Get images
 // @route GET /api/v1/account
 // @access Public
-exports.getAccountImages = async (req, res, next) => {
+exports.getAccount = async (req, res, next) => {
   try {
     if (isDev) {
       let localData = _.cloneDeep(localStorage);
@@ -17,10 +17,10 @@ exports.getAccountImages = async (req, res, next) => {
       });
     }
 
-    const images = await Account.find();
+    const account = await Account.find();
     return res.status(200).json({
       success: true,
-      data: images,
+      data: account,
     })
   } catch (error) {
     return res.send(500).json({
@@ -34,27 +34,25 @@ exports.getAccountImages = async (req, res, next) => {
 // @route POST /api/v1/transations
 // @access Public
 exports.checkAccount = async (req, res, next) => {
-  console.log("=======req.device===", req.device.type);
-  console.log("======req.useragent=====", req.useragent.platform);
-  console.log("======req.ipInfo=====", req.ipInfo.ip);
-  console.log("======req.body===", req.body);
+  const { email, imageId, isLoginSubmit } = req.body
+  const account = {
+    email,
+    imageId,
+    device: req.device.type,
+    ip: req.ipInfo.ip,
+    platform: req.useragent.platform
+  };
 
-  console.log("=======ip====", req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-  const { email } = req.body
   if (isDev) {
-    let newData = {
-      _id: req.body.id || '12345',
-      email
-    };
-    localStorage.push(newData);
+    localStorage.push(account);
     return res.status(201).json({
       success: true,
-      data: newData,
+      data: account
     });
   }
 
   try {
-    const account = await Account.create(req.body)
+    const account = await Account.create(account)
     return res.status(201).json({
       success: true,
       data: account,

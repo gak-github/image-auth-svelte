@@ -1,5 +1,7 @@
 <script>
     import Image from './Image.svelte';
+    import store from '../store/store-account';
+
     let images = [
         {id: 1, name: 'one', src: './images/1.jpg'},
         {id: 2, name: 'two', src: './images/2.jpg'},
@@ -9,7 +11,7 @@
     ];
 </script>
 
-<h4>Please select an image</h4>
+<h5>Please select an image for {$store.email}</h5>
 <div>
     <ul class='list'>
         { #each images as image }
