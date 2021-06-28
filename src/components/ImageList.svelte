@@ -56,10 +56,7 @@
 
         if (isAccountCreated || isLoggedIn) {
             page('/success');
-        } else if (isAccountExist) {
-            page('/signup');
         } else {
-            console.log("====== should not be coming here===")
             page('/error');
         }
   };

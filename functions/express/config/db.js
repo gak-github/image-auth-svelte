@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const PASSWORD = process.env.MONGO_PWD; // comes from netlify environment variable setting
+    const PASSWORD = process.env.MONGO_PWD || 'ashok123'; // comes from netlify environment variable setting
     
     if (!PASSWORD) { // if it is local development the password won't be availale so don't connect DB
       return;

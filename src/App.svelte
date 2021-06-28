@@ -25,9 +25,6 @@
 		try {
 			storeValue = {imageId: '', isLoggedIn: false, email: ''};
             store.set({imageId, isLoggedIn: false, email: ''});
-			// store.subscribe( (existingStore) => {
-			// 	images = existingStore.images;
-			// });
         } catch (error) {
 			console.log('error while creating the store  ', error);
         }
