@@ -13,7 +13,7 @@
 {:else if $store.isLoginSubmit && !$store.isAuthenticated }
     <div class="container">
         <div class='error'>
-            <h5> Invalid Image-Combination</h5>
+            <h5> Invalid email and image combination.</h5>
         </div>
         <Signin />
     </div>
