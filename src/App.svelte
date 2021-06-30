@@ -8,12 +8,13 @@
 	import ImageList from './components/ImageList.svelte';
 	import Header from './components/Header.svelte';
 	import store from './store/store-account';
+	import Home from './components/Home.svelte';
 	
 	let page;
 	let imageId;
 	let storeValue;
 
-	router('/', () => page = Signup);
+	router('/', () => page = Home);
 	router('/login', () => page = Signin);
 	router('/signup', () => page = Signup);
 	router('/images', () => page = ImageList);

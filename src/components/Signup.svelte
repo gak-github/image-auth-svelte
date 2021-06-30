@@ -54,7 +54,7 @@
     <div><p>Loading...</p></div>
 {:else }
     <div class="container">
-        <h2>Signup</h2>
+        <h2>New Signup</h2>
         <form on:submit={onSubmit}>
             <div>
                 <input
@@ -69,7 +69,7 @@
             <button class="btn">Continue</button>
         </form>
         <div>
-            <span>Already have an account?</span><a href='/login'>Login</a>
+            <span>Already signed up? </span><a href='/login'>Login Existing User</a>
         </div>
     </div>
 {/if}

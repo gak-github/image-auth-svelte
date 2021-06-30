@@ -1,1 +1,1 @@
-<h3> An image based authentication</h3>
+<h3> A Prototype of digital image based authentication</h3>

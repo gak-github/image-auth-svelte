@@ -28,7 +28,7 @@
     <p>Loading the images...</p>
 {:else}
     <div class="container">
-        <h2>Signin</h2>
+        <h2>Existing User Login</h2>
         <form on:submit={onSubmit}>
             <div>
                 <input
@@ -40,7 +40,7 @@
                     on:blur={ e => e.target.value = email }
                 />
             </div>
-            <button class="btn">Signin Continue</button>
+            <button class="btn">Login Continue</button>
         </form>
     </div>
 {/if}
