@@ -12,6 +12,14 @@
         {id: 5, name: 'five', src: './images/5.jpg'}
     ];
 
+    let images1 = [
+        {id: 1, name: 'one', src: './images/6.jpg'},
+        {id: 2, name: 'two', src: './images/7.jpg'},
+        {id: 3, name: 'three', src: './images/8.jpg'},
+        {id: 4, name: 'four', src: './images/9.jpg'},
+        {id: 5, name: 'five', src: './images/10.jpg'}
+    ];
+
     const onSubmit = async (e) => {
         e.preventDefault();
         if ($store.imageId === '') {
@@ -72,6 +80,11 @@
         <ul class='list'>
             { #each images as image }
                 <Image image={image} />
+            { /each }
+        </ul>
+        <ul class='list'>
+            { #each images1 as image1 }
+                <Image image={image1} />
             { /each }
         </ul>
         <form on:submit={onSubmit}>
