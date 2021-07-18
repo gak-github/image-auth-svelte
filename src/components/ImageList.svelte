@@ -13,11 +13,11 @@
     ];
 
     let images1 = [
-        {id: 1, name: 'one', src: './images/6.jpg'},
-        {id: 2, name: 'two', src: './images/7.jpg'},
-        {id: 3, name: 'three', src: './images/8.jpg'},
-        {id: 4, name: 'four', src: './images/9.jpg'},
-        {id: 5, name: 'five', src: './images/10.jpg'}
+        {id: 6, name: 'six', src: './images/6.jpg'},
+        {id: 7, name: 'seven', src: './images/7.jpg'},
+        {id: 8, name: 'eight', src: './images/8.jpg'},
+        {id: 9, name: 'nine', src: './images/9.jpg'},
+        {id: 10, name: 'ten', src: './images/10.jpg'}
     ];
 
     const onSubmit = async (e) => {

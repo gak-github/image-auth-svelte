@@ -1,17 +1,24 @@
 <script>
   import store from '../store/store-account';
-  import page from 'page';
 
   export let image;
-  let isSubmitting = false;
-
   const clickHandler = (e) => {
     e.preventDefault();
     let imageId = e.target.id;
+    if ($store.selected) {
+      $store.selected.style.height = '200px';
+      $store.selected.style.width = '200px';
+    }
+    let selected = e.target;
+
+    e.target.style.height = '240px';
+    e.target.style.width = '240px';
+    e.target.style.transition = "width 0.2s ease"
     store.update(currentStore => {
         return {
             ...currentStore,
-            imageId
+            imageId,
+            selected
         }
     });
   };
